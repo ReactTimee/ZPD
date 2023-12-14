@@ -42,16 +42,16 @@ function displayBox() {
 }
 
 function hideBox() {
-//  const name = nameInput.value.trim();
- // const age = ageInput.value
+ const name = nameInput.value.trim();
+ const age = ageInput.value
   if (gameRunning) {
     endTime = new Date();
     const reactionTime = endTime - startTime;
     const reactionTimeDisplay = document.getElementById('reactionTimeDisplay');
     reactionTimeDisplay.textContent = `Reakcijas laiks: ${reactionTime} ms`;
-    gameRunning = false; // Stop the game
+    gameRunning = false; 
     document.getElementById('box').style.display = 'none';
-   // recordReactionTime({ name, reactionTime ,age});
+    recordReactionTime({ name, reactionTime ,age});
   }
 }
 
@@ -61,9 +61,9 @@ refreshButton.addEventListener("click", function () {
 
 document.getElementById('box').addEventListener('click', hideBox);
 
-//async function recordReactionTime(data) {
-  //const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
- // const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&key=rihards123`;
+async function recordReactionTime(data) {
+  const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
+  const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&key=rihards123`;
   //save results in db
- // await fetch(url);
-//}
+  await fetch(url)
+}
