@@ -1,0 +1,76 @@
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-top: 50px;
+}
+
+label {
+  font-weight: bold;
+  color: #495057;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+#ReactionButton,
+#refreshButton {
+  border-radius: 600px;
+}
+
+#ReactionButton {
+  background-color: #28a745;
+  border: none;
+}
+
+#refreshButton {
+  background-color: #dc3545;
+  border: none;
+}
+.custom-heading {
+  color: #28a745;
+}
+
+#reactionTime {
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 15px;
+}
+
+/* Increase font size for mobile */
+@media (max-width: 767px) {
+  #ReactionButton {
+    padding: 90px 30px;
+    background-color: #28a745; 
+    margin-bottom: 10px;
+    border-radius: 50px
+  }
+
+  #refreshButton {
+    background-color: #e74c3c; 
+    padding: 30px 30px;
+  }
+
+  #ReactionButton,
+  #refreshButton {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Increase font size for PCs */
+@media (min-width: 768px) {
+  #ReactionButton {
+    padding: 100px  250px;
+    font-size: 24px; 
+  }
+
+  #refreshButton {
+    padding: 50px 125px;
+    font-size: 24px; 
+    margin-left: 10px; 
+  }
+}
