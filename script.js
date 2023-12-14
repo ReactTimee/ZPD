@@ -56,3 +56,4 @@ async function recordReactionTime(data) {
   const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&key=rihards123`;
  ///save results in db
   await fetch(url);
+}
