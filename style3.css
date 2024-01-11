@@ -1,15 +1,24 @@
 #game-container {
   position: absolute;
-  width: 80%;
-  height: 400px;
-  padding: 15px;
-  background-color: #fff; 
+  width: 1300px;
+  height: 600px;
+  border: 3px solid #ccc;
+  left: 50%;
+  top: 20%; /* Adjust the percentage to move it up or down */
+  transform: translateX(-50%);
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  text-align: center;
+  padding: 30px;
+}
+#refreshButton {
+  padding: 10px 20px;
+  font-size: 24px; 
+  padding: 15px 35px; 
+  margin-top: 15px;
 }
 #btn{
+  font-size: 24px; 
   padding: 15px 35px; 
   background-color: #28a745;
 }
@@ -20,4 +29,5 @@ h1 {
 .custom-input {
   width: 100% 
 }
+
 
