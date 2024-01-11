@@ -54,6 +54,6 @@ function getRandomDelay(min, max) {
 async function recordReactionTime(data) {
   const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
   const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&key=rihards123`;
- ///save results in db
+ // //save results in db
   await fetch(url);
 }
