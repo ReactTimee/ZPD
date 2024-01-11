@@ -4,7 +4,7 @@
   height: 600px;
   border: 3px solid #ccc;
   left: 50%;
-  top: 20%; /* Adjust the percentage to move it up or down */
+  top: 20%;
   transform: translateX(-50%);
   background-color: #fff;
   border-radius: 10px;
