@@ -1,84 +1,38 @@
-#reactionTimeDisplay{
-  font-weight: bold;
-  color: #007bff;
-  margin-top: 15px;
-}
-label {
-  font-weight: bold;
-  color: #495057;
-}
-
-.custom-heading {
-  color: #28a745;
-}
-
-
-/*phone */
-@media  (max-width: 600px) {
-  #game-container {
-    position: absolute;
-    width: 80%;
-    height: 400px;
-    padding: 15px;
-    border: 3px solid #ccc;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-
-  #box {
-    background-color: red;
-    position: absolute;
-    display: none;
-    width: 15%;
-    height: 15%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
- 
-  #startButton {
-    padding: 10px 20px;
-  }
-  #refreshButton {
-    padding: 10px 20px ;
-  }
-}
-
-/*pc */
-@media  (min-width: 601px) {
-  #game-container {
+#game-container{
     position: absolute;
     width: 1300px;
-    height: 600px;
+    height: 725px;
     border: 3px solid #ccc;
     left: 50%;
+    top: 20%; 
     transform: translateX(-50%);
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
-  }
-  
-  #box {
-    width: 10%;
-    height: 20%;
+}
+#h1{
+    padding: 10px; 
+    color: #28a745 
+}
+#startButton{
+    font-size: 24px; 
+    padding: 15px 35px; 
+    background-color: #28a745;
+    width: 200px;
+}
+#box {
+    width: 100px; 
+    height: 100px; 
     background-color: red;
     position: absolute;
-    display: none;
-    /* Adjust the position for larger screens */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  #startButton {
-    padding: 15px 35px; 
-  }
-  #refreshButton {
-    padding: 15px 35px;
-  }
 }
+
+  #box {
+    display: none; 
+  }
+  
+  #startButton.started,
+  input.started,label.started,p.started,h1.started{
+    display: none;
+  }
