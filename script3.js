@@ -5,50 +5,68 @@ var gameCounter = 0;
 var totalGames = 10;
 var reactionTimes = [];
 
+var startTime;
+var playerName;
+var playerAge;
+var totalGames = 10;
+var remainingGames = totalGames; // Variable to track remaining games
+var reactionTimes = []; // Array to store reaction times for correct guesses
+
 function startGame() {
-    if (gameCounter >= totalGames) {
+    if (remainingGames <= 0) {
         alert("Test pabeigts. Pārbaudiet reakcijas laikus zemāk.");
         return;
     }
 
     playerName = document.getElementById("name").value;
     playerAge = document.getElementById("age").value;
-  
+    hidestuff();
 
     if (!playerName || !playerAge) {
         alert("Ievadi vārdu un vecumu.");
         return;
     }
+
+    // Clear the result message and update attempts display
     document.getElementById("result-message").innerText = "";
-    var delayBeforeOptions = 1500;
+    document.getElementById("attempts").innerText = "Mēģinājumi atklikuši: " + remainingGames;
+
+    var delayBeforeOptions = 1500; // Adjust the delay time (in milliseconds) as needed
     var delayTime = 1000;
+
     setTimeout(function () {
         var randomNumber = Math.floor(Math.random() * 4) + 1;
+
         var targetNumberElement = document.getElementById("number-to-find");
         targetNumberElement.innerHTML = '';
-        targetNumberElement.appendChild(createSVGIcon(randomNumber));
+        targetNumberElement.appendChild(createSVGIcon(randomNumber, '6em')); // Adjust the size as needed
+
         setTimeout(function () {
             var buttonValues = [1, 2, 3, 4];
             shuffleArray(buttonValues);
+
             var buttonContainer = document.getElementById("button-container");
             buttonContainer.innerHTML = "";
+
             for (var i = 0; i < buttonValues.length; i++) {
                 var button = document.createElement("button");
                 button.className = "button";
-                button.appendChild(createSVGIcon(buttonValues[i]));
+                button.appendChild(createSVGIcon(buttonValues[i], '4em')); // Adjust the size as needed
                 button.onclick = checkNumber.bind(null, buttonValues[i], randomNumber);
                 buttonContainer.appendChild(button);
             }
+
             startTime = new Date().getTime();
         }, delayTime);
     }, delayBeforeOptions);
 }
 
 function checkNumber(selectedNumber, targetNumber) {
-    playerName = document.getElementById("name").value;
-    playerAge = document.getElementById("age").value;
-
+    name = document.getElementById("name").value;
+    age = document.getElementById("age").value;
+    variants = 3;
     var resultMessage = document.getElementById("result-message");
+    var attemptsDisplay = document.getElementById("attempts");
     var endTime = new Date().getTime();
     var reactionTime = endTime - startTime;
 
@@ -60,29 +78,30 @@ function checkNumber(selectedNumber, targetNumber) {
         // Display all reaction times for correct guesses in a bulleted list
         var reactionList = document.getElementById("reaction-time");
         var listItem = document.createElement("li");
-        listItem.innerHTML = "Reaction Time " + (reactionTimes.length) + ": " + reactionTime + " ms";
+        listItem.innerHTML = "Reakcijas laiks " + (reactionTimes.length) + ": " + reactionTime + " ms";
         reactionList.appendChild(listItem);
 
-        gameCounter++;
-        if (gameCounter < totalGames) {
+        remainingGames--;
+        recordReactionTime({ variants,name, reactionTime ,age})
+        if (remainingGames > 0) {
             startGame();
         } else {
-            alert("Spēles ir pabeigtas!");
+            alert("Test pabeigts. Pārbaudiet reakcijas laikus zemāk.");
         }
     } else {
         resultMessage.innerText = "Nepareizais numurs";
-        // If the guess is incorrect, don't add the reaction time to the array
-        // Start the next game after a delay
-        setTimeout(startGame, 1000);
+
+        // Check if games are exhausted
+        if (remainingGames <= 0) {
+            resultMessage.innerText += " No more games!";
+            setTimeout(startGame, 1000);
+        } else {
+            attemptsDisplay.innerText = "Games remaining: " + remainingGames;
+            setTimeout(startGame, 2000); // Start the next game after a delay
+        }
     }
 }
 
-  
-
-  
-  
-  
-  
 function hidestuff(){
     document.getElementById('h1').style.display = 'none';
     document.getElementById('p').style.display = 'none';
@@ -127,3 +146,11 @@ function shuffleArray(array) {
   }
   
 }
+
+async function recordReactionTime(data) {
+  const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
+  const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&variant=${data.variants}&key=rihards123`;
+  //save results in db
+  await fetch(url);
+}
+
