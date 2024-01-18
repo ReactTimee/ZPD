@@ -1,9 +1,3 @@
-var startTime;
-var playerName;
-var playerAge;
-var gameCounter = 0;
-var totalGames = 10;
-var reactionTimes = [];
 
 var startTime;
 var playerName;
@@ -20,46 +14,47 @@ function startGame() {
 
     playerName = document.getElementById("name").value;
     playerAge = document.getElementById("age").value;
-    hidestuff();
 
     if (!playerName || !playerAge) {
         alert("Ievadi vārdu un vecumu.");
         return;
+    }else{
+      hidestuff()
+      document.getElementById("result-message").innerText = "";
+      document.getElementById("attempts").innerText = "Mēģinājumi atklikuši: " + remainingGames;
+  
+      var delayBeforeOptions = 1500; 
+      var delayTime = 1000;
+  
+      setTimeout(function () {
+          var randomNumber = Math.floor(Math.random() * 4) + 1;
+  
+          var targetNumberElement = document.getElementById("number-to-find");
+          targetNumberElement.innerHTML = '';
+          targetNumberElement.appendChild(createSVGIcon(randomNumber, '6em')); 
+  
+          setTimeout(function () {
+              var buttonValues = [1, 2, 3, 4];
+              shuffleArray(buttonValues);
+  
+              var buttonContainer = document.getElementById("button-container");
+              buttonContainer.innerHTML = "";
+  
+              for (var i = 0; i < buttonValues.length; i++) {
+                  var button = document.createElement("button");
+                  button.className = "button";
+                  button.appendChild(createSVGIcon(buttonValues[i], '4em'));
+                  button.onclick = checkNumber.bind(null, buttonValues[i], randomNumber);
+                  buttonContainer.appendChild(button);
+              }
+  
+              startTime = new Date().getTime();
+          }, delayTime);
+      }, delayBeforeOptions);
+  }
+  
     }
 
-    // Clear the result message and update attempts display
-    document.getElementById("result-message").innerText = "";
-    document.getElementById("attempts").innerText = "Mēģinājumi atklikuši: " + remainingGames;
-
-    var delayBeforeOptions = 1500; // Adjust the delay time (in milliseconds) as needed
-    var delayTime = 1000;
-
-    setTimeout(function () {
-        var randomNumber = Math.floor(Math.random() * 4) + 1;
-
-        var targetNumberElement = document.getElementById("number-to-find");
-        targetNumberElement.innerHTML = '';
-        targetNumberElement.appendChild(createSVGIcon(randomNumber, '6em')); // Adjust the size as needed
-
-        setTimeout(function () {
-            var buttonValues = [1, 2, 3, 4];
-            shuffleArray(buttonValues);
-
-            var buttonContainer = document.getElementById("button-container");
-            buttonContainer.innerHTML = "";
-
-            for (var i = 0; i < buttonValues.length; i++) {
-                var button = document.createElement("button");
-                button.className = "button";
-                button.appendChild(createSVGIcon(buttonValues[i], '4em')); // Adjust the size as needed
-                button.onclick = checkNumber.bind(null, buttonValues[i], randomNumber);
-                buttonContainer.appendChild(button);
-            }
-
-            startTime = new Date().getTime();
-        }, delayTime);
-    }, delayBeforeOptions);
-}
 
 function checkNumber(selectedNumber, targetNumber) {
     name = document.getElementById("name").value;
@@ -73,9 +68,9 @@ function checkNumber(selectedNumber, targetNumber) {
     document.getElementById("button-container").innerHTML = "";
 
     if (selectedNumber === targetNumber) {
-        reactionTimes.push(reactionTime); // Add reaction time to the array for correct guesses
+        reactionTimes.push(reactionTime); 
 
-        // Display all reaction times for correct guesses in a bulleted list
+      
         var reactionList = document.getElementById("reaction-time");
         var listItem = document.createElement("li");
         listItem.innerHTML = "Reakcijas laiks " + (reactionTimes.length) + ": " + reactionTime + " ms";
@@ -91,13 +86,12 @@ function checkNumber(selectedNumber, targetNumber) {
     } else {
         resultMessage.innerText = "Nepareizais numurs";
 
-        // Check if games are exhausted
         if (remainingGames <= 0) {
             resultMessage.innerText += " No more games!";
             setTimeout(startGame, 1000);
         } else {
             attemptsDisplay.innerText = "Games remaining: " + remainingGames;
-            setTimeout(startGame, 2000); // Start the next game after a delay
+            setTimeout(startGame, 2000); 
         }
     }
 }
