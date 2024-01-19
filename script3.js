@@ -146,6 +146,6 @@ async function recordReactionTime(data) {
   //save results in db
   await fetch(url,{
      mode: 'no-cors'
-          }));
+          });
 }
 
