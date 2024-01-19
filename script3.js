@@ -140,16 +140,12 @@ function shuffleArray(array) {
   }
   
 }
-function cors{
-    fetch(url,{
-     mode: 'no-cors'
-          })
-}
 async function recordReactionTime(data) {
   const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
   const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&variant=${data.variants}&key=rihards123`;
-    cors()
   //save results in db
-  await fetch(url);
+  await fetch(url,{
+     mode: 'no-cors'
+          }));
 }
 
