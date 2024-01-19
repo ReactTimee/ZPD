@@ -67,9 +67,15 @@ function changeButtonColor(name) {
 function getRandomDelay(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+function cors{
+    fetch(url,{
+     mode: 'no-cors'
+          })
+}
 async function recordReactionTime(data) {
     const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
     const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&variant=${data.variants}&key=rihards123`;
+  cors()
     //save results in db
     await fetch(url);
   }
