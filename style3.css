@@ -1,7 +1,7 @@
 #game-container {
     position: absolute;
     width: 1300px;
-    height: 725px;
+    height: 600px;
     border: 3px solid #ccc;
     left: 50%;
     top: 20%; 
@@ -11,11 +11,25 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
   }
+  #instruction-box {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+  #refreshButton {
+    padding: 10px 20px;
+    font-size: 24px; 
+    padding: 15px 35px; 
+    margin-top: 15px;
+  }
   #btn{
-  font-size: 24px; 
+    font-size: 24px; 
     padding: 15px 35px; 
     background-color: #28a745;
-    width: 200px;
   }
   h1 {
     padding: 10px; 
@@ -29,5 +43,11 @@
   input.started,label.started,h1.started{
     display: none;
   }
-  
+  ul{
+    width: 150px;
+  }
+  li {
+    font-size: small;
+    margin-bottom: 10px; 
+}
  
