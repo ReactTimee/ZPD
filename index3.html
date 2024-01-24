@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="style3.css">
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
+  <div id="instruction-box">
+    <h1>Instrukcijas</h1>
+    <ul>
+      <li><strong>Ievadi savu vārdu un vecumu:</strong> Lai sāktu, norādi savu vārdu un vecumu.</li>
+      <li><strong>Spied "Sākt":</strong> Pēc tam, spied pogu "Sākt" reakcijas mērīšanas procesam.</li>
+      <li><strong>Atrodi meklējamo skaitli no dotajiem četriem skaitļiem:</strong>Parādīsies meklējamais skaitlis un 4 citi skaitļi.Spied uz meklējamā skaitļa</li>
+  </ul>
+  </div>
   <div class="container text-center">
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,14 +26,15 @@
               </svg>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="index.html">1</a></li>
-            <li><a class="dropdown-item" href="index2.html">2</a></li>
-            <li><a class="dropdown-item" href="index3.html">3</a></li>
+            <li><a class="dropdown-item" href="index.html">Spied pogu!</a></li>
+            <li><a class="dropdown-item" href="index2.html">Ātrās Kastes Spēle</a></li>
+            <li><a class="dropdown-item" href="index3.html">Meklējamais cipars</a></li>
         </ul>
-    </div>
+      </div>
+     
 <div id="game-container" class="text-center">
     <h1 id="h1"class="mt-5 ">ReactTime</h1>
-    <p id="p" class="lead">Noteikumi:Nospiediet sākt un atrodiet meklējamo numuru</p>
+    <h2 class="lead">Atrodi meklējamo ciparu</h2>
   <form id="user-form" class="mt-3">
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -41,9 +50,9 @@
       </div>
     </div>
   </form>
-  <p id="target-number" class="mt-3">Meklējamais Numbers: <span id="number-to-find"></span></p>
+  <p id="target-number" class="mt-3">Meklējamais cipars: <span id="number-to-find"></span></p>
   <div id="button-container"></div>
-  <div id="attempts">Mēģinājumi atlikuši:10</div>
+  <div id="attempts">Mēģinājumi atklikuši:10</div>
   <p id="result-message"></p>
   <p id="reaction-time"></p>
 </div>
