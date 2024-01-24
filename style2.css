@@ -11,7 +11,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
 }
-#h1{
+#instruction-box {
+  width: 100%;
+  text-align: left;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+h1{
+    font-size: 50px;
     padding: 10px; 
     color: #28a745 
 }
@@ -36,3 +45,10 @@
   input.started,label.started,p.started,h1.started{
     display: none;
   }
+  ul{
+    width: 150px;
+  }
+  li {
+    font-size: small;
+  
+}
