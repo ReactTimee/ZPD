@@ -34,7 +34,7 @@ function changeButtonColor(name) {
     reactionButton.style.backgroundColor = "green";
     startTime = new Date().getTime();
     reactionButton.disabled = false;
-    recordReactionTime({ variants,name, reactionTime ,age});
+   
     reactionButton.onclick = function () {
       if (testCounter >= 10) {
         return; 
@@ -46,7 +46,7 @@ function changeButtonColor(name) {
       reactionTimeDisplay.innerHTML += `<li>Reakcijas laiks ${testCounter + 1}: ${reactionTime} ms</li>`;
   
       testCounter++;
-     
+      recordReactionTime({ variants,name, reactionTime ,age});
       if (testCounter < 10) {
         clearTimeout(timeoutId);
         reactionButton.style.backgroundColor = "red";
