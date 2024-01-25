@@ -1,10 +1,9 @@
-
 var startTime;
 var playerName;
 var playerAge;
 var totalGames = 10;
-var remainingGames = totalGames; // Variable to track remaining games
-var reactionTimes = []; // Array to store reaction times for correct guesses
+var remainingGames = totalGames;
+var reactionTimes = []; 
 
 function startGame() {
     if (remainingGames <= 0) {
@@ -98,7 +97,8 @@ function checkNumber(selectedNumber, targetNumber) {
 
 function hidestuff(){
     document.getElementById('h1').style.display = 'none';
-    document.getElementById('p').style.display = 'none';
+    document.getElementById('instruction-box').style.display = 'none';
+ 
   document.getElementById('btn').style.display = 'none';
   document.querySelectorAll('input').forEach(input => input.style.display = 'none');
   document.getElementById('game-container').classList.add('started');
@@ -140,12 +140,11 @@ function shuffleArray(array) {
   }
   
 }
+
 async function recordReactionTime(data) {
   const baseUrl = "https://programmesana2.lv/api/rihards-db/post";
   const url = `${baseUrl}?name=${data.name}&reactionTime=${data.reactionTime}&age=${data.age}&variant=${data.variants}&key=rihards123`;
   //save results in db
-  await fetch(url,{
-     mode: 'no-cors'
-          });
+  await fetch(url);
 }
 
