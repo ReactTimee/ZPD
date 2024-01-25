@@ -23,6 +23,7 @@ h1{
 }
 h2{
     font-size: 20px;
+    padding: 10px; 
     color: #28a745 
 }
 #instruction-box {
